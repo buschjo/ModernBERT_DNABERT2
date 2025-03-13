@@ -128,6 +128,8 @@ def build_algorithm(name, kwargs):
         return algorithms.Alibi(**kwargs)
     elif name == "gated_linear_units":
         return algorithms.GatedLinearUnits(**kwargs)
+    elif name == 'low_precision_layernorm':
+        return algorithms.LowPrecisionLayerNorm(**kwargs)
     elif name == "ema":
         return algorithms.EMA(
             half_life=kwargs.get("half_life", "1000ba"),
