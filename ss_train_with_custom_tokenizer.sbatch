@@ -1,17 +1,17 @@
 #!/bin/bash
 
-#SBATCH --job-name=local_tok
-#SBATCH --gres=gpu:1
+#SBATCH --job-name=dna_pret
+#SBATCH --gres=gpu:2
 #SBATCH --nodes=1
-#SBATCH --time=01:00:00
-#SBATCH --cpus-per-gpu=8
+#SBATCH --time=48:00:00
+#SBATCH --cpus-per-gpu=4
 #SBATCH --mem-per-cpu=32G
 #SBATCH --qos=normal
-#SBATCH --output=../../sbatch_output/dnabert2_modern/local_tokenizer/%j_%x.out
-#SBATCH --error=../../sbatch_output/dnabert2_modern/local_tokenizer/%j_%x.err
+#SBATCH --output=../../sbatch_output/dnabert2_modern/pretraining/%j_%x.out
+#SBATCH --error=../../sbatch_output/dnabert2_modern/pretraining/%j_%x.err
 
-##SBATCH --mail-type=ALL
-##SBATCH --mail-user=s0560106@htw-berlin.de
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=s0560106@htw-berlin.de
 
 source $HOME/.bashrc
 conda activate bert24
