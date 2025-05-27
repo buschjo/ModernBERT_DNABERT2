@@ -54,7 +54,7 @@ def update_batch_size_info(cfg: DictConfig):
         raise ValueError(
             f"Global batch size {global_batch_size} is not divisible by {dist.get_world_size()} "
             "as a result, the batch size would be truncated, please adjust `global_batch_size` "
-            f"to be divisible by world size, {dist.get_world_size()}."
+            f"to fbe divisible by world size, {dist.get_world_size()}."
         )
     device_train_batch_size = global_batch_size // dist.get_world_size()
     if isinstance(device_microbatch_size, int):
@@ -302,7 +302,6 @@ def build_dataloader(
     )
     return data_loader
 
-
 def build_model(cfg: DictConfig):
     if cfg.name == "hf_bert":
         return hf_bert_module.create_hf_bert_mlm(
@@ -504,9 +503,18 @@ def main(cfg: DictConfig, return_trainer: bool = False, do_train: bool = True) -
         else:
             trainer.fit(reset_time=cfg.get("reset_time", False))
 
+	# #### Adapted by Josefine Busch (02.05.2025)
+	# # Save model and tokenizer
+    # print(f"Saving model to {cfg.get('save_folder', None)}")
+    # model.model.save_pretrained(f"{cfg.get('save_folder', None)}/model_final")
+    # # model.tokenizer.save_pretrained(f"{cfg.get("save_folder", None)}/tokenizer_final")
+    
+    # torch.save(model, f"/scratch/jbusch/ma/models/modern_bert/save_model/model_final.pt")
+
+	# #### end of adapted by Josefine Busch (02.05.2025)
+
     if return_trainer:
         return trainer
-
 
 if __name__ == "__main__":
     yaml_path, args_list = sys.argv[1], sys.argv[2:]

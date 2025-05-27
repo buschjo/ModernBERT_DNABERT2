@@ -3,16 +3,16 @@
 
 # Follow the instructions in the README to set up ./my-copy-c4
 # Or point data paths to your remote C4 dataset
-data_local: /scratch/jbusch/ma/data/dnabert_2_pretrain/streaming
+data_local: /scratch/jbusch/ma/data/dnabert_2_pretrain/streaming_small
 data_remote: # If blank, files must be present in data_local
 
-max_seq_len: 128
+max_seq_len: 126
 model_name: zhihan1996/DNABERT-2-117M
-tokenizer_name: /scratch/jbusch/ma/tokenizer/hf_dnabert_sub5M
+tokenizer_name: /scratch/jbusch/ma/tokenizer/hs_tokenizer/fixed_encode_decode/sub5M_tokenizer
 mlm_probability: 0.15 # MosaicBERT should use 30% masking for optimal performance
 
 # Run Name
-run_name: test_setup_5M_tokenizer1
+run_name: hs_tokenizer_small_v3
 
 # Model
 model:
@@ -74,9 +74,12 @@ optimizer:
 # algorithms:
 
 # max_duration: 286720000sp # Subsample the training data for ~275M samples
-max_duration: 500000ba
-eval_interval: 2000ba
-global_train_batch_size: 4096
+# max_duration: 150000ba
+# eval_interval: 2000ba
+max_duration: 4ba
+eval_interval: 2ba
+# global_train_batch_size: 4096
+global_train_batch_size: 50
 
 # System
 seed: 17
@@ -86,6 +89,8 @@ precision: amp_bf16
 
 global_eval_batch_size: 256
 device_eval_microbatch_size: 64
+# global_eval_batch_size: 50
+# device_eval_microbatch_size: 25
 
 # Logging
 progress_bar: false
@@ -98,7 +103,7 @@ callbacks:
   lr_monitor: {}
 
 algorithms:
-  alibi: {'max_sequence_length' : 128}
+  # alibi: {'max_sequence_length' : 128}
   low_precision_layernorm: {}
   # gradient_clipping:
   #   clipping_type: norm
@@ -111,7 +116,8 @@ loggers:
     # entity:      # Fill this in
 
 # (Optional) Checkpoint to local filesystem or remote object store
-save_interval: 3500ba
+# save_interval: 3500ba
+save_interval: 1ba
 save_num_checkpoints_to_keep: 5  # Important, this cleans up checkpoints saved to DISK
 save_folder: /scratch/jbusch/ma/models/modern_bert/{run_name}/ckpt      # e.g. './{run_name}/ckpt' (local) or 's3://mybucket/mydir/{run_name}/ckpt' (remote)
 
@@ -119,4 +125,4 @@ save_folder: /scratch/jbusch/ma/models/modern_bert/{run_name}/ckpt      # e.g. '
 # start from an existing model checkpoint;
 # e.g. './ckpt/latest-rank{rank}.pt' (local), or
 # 's3://mybucket/mydir/ckpt/latest-rank{rank}.pt' (remote)
-load_path: /scratch/jbusch/ma/models/modern_bert/{run_name}/ckpt/latest-rank{rank}.pt
+# load_path: /scratch/jbusch/ma/models/modern_bert/{run_name}/ckpt/latest-rank{rank}.pt

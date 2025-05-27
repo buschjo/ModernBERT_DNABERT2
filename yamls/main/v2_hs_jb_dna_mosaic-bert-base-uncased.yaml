@@ -3,20 +3,21 @@
 
 # Follow the instructions in the README to set up ./my-copy-c4
 # Or point data paths to your remote C4 dataset
-data_local: /scratch/jbusch/ma/data/my-copy-c4
+data_local: /scratch/jbusch/ma/data/dnabert_2_pretrain/streaming_small
 data_remote: # If blank, files must be present in data_local
 
-max_seq_len: 128
-tokenizer_name: bert-base-uncased
-mlm_probability: 0.3 # MosaicBERT should use 30% masking for optimal performance
+max_seq_len: 126
+model_name: zhihan1996/DNABERT-2-117M
+tokenizer_name: /scratch/jbusch/ma/tokenizer/hs_tokenizer/fixed_encode_decode/sub5M_tokenizer
+mlm_probability: 0.15 # MosaicBERT should use 30% masking for optimal performance
 
 # Run Name
-run_name: mosaic-bert-base-uncased_c4
+run_name: hs_tokenizer_small_scale_test_v2
 
 # Model
 model:
   name: mosaic_bert
-  pretrained_model_name: ${tokenizer_name}
+  pretrained_model_name: ${model_name}
   tokenizer_name: ${tokenizer_name}
   # MosaicBERT 'base' generally uses the default architecture values for from the Hugging Face BertConfig object
   # Note: if using the pretrained_checkpoint argument to create a model from an existing checkpoint, make sure
@@ -33,7 +34,7 @@ train_loader:
   dataset:
     local: ${data_local}
     remote: ${data_remote}
-    split: train_small
+    split: train
     tokenizer_name: ${tokenizer_name}
     max_seq_len: ${max_seq_len}
     shuffle: true
@@ -58,11 +59,11 @@ eval_loader:
 scheduler:
   name: linear_decay_with_warmup
   t_warmup: 0.06dur # Warmup to the full LR for 6% of the training duration
-  alpha_f: 0.02 # Linearly decay to 0.02x the full LR by the end of the training duration
+  alpha_f: 0.0 # Linearly decay to 0.02x the full LR by the end of the training duration
 
 optimizer:
   name: decoupled_adamw
-  lr: 5.0e-4 # Peak learning rate
+  lr: 1.0e-5 # Peak learning rate
   betas:
   - 0.9
   - 0.98
@@ -73,18 +74,23 @@ optimizer:
 # algorithms:
 
 # max_duration: 286720000sp # Subsample the training data for ~275M samples
-max_duration: 1000000sp
-eval_interval: 10ba
-global_train_batch_size: 4096
+# max_duration: 150000ba
+# eval_interval: 2000ba
+max_duration: 20ba
+eval_interval: 5ba
+# global_train_batch_size: 4096
+global_train_batch_size: 50
 
 # System
 seed: 17
-device_train_microbatch_size: 128
-# device_train_microbatch_size: auto
+# device_train_microbatch_size: 128
+device_train_microbatch_size: auto
 precision: amp_bf16
 
 global_eval_batch_size: 256
 device_eval_microbatch_size: 64
+# global_eval_batch_size: 50
+# device_eval_microbatch_size: 25
 
 # Logging
 progress_bar: false
@@ -97,23 +103,26 @@ callbacks:
   lr_monitor: {}
 
 algorithms:
-  gradient_clipping:
-    clipping_type: norm
-    clipping_threshold: 1.0
+  # alibi: {'max_sequence_length' : 128}
+  low_precision_layernorm: {}
+  # gradient_clipping:
+  #   clipping_type: norm
+  #   clipping_threshold: 1.0
 
 # (Optional) W&B logging
 loggers:
   wandb:
-    project: modern_bert_pretraining_c4     # Fill this in
-    entity:      # Fill this in
+    project: modern_dnabert_pretraining     # Fill this in
+    # entity:      # Fill this in
 
 # (Optional) Checkpoint to local filesystem or remote object store
 # save_interval: 3500ba
-# save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
+save_interval: 1ba
+save_num_checkpoints_to_keep: 5  # Important, this cleans up checkpoints saved to DISK
 save_folder: /scratch/jbusch/ma/models/modern_bert/{run_name}/ckpt      # e.g. './{run_name}/ckpt' (local) or 's3://mybucket/mydir/{run_name}/ckpt' (remote)
 
 # (Optional) Load from local filesystem or remote object store to
 # start from an existing model checkpoint;
 # e.g. './ckpt/latest-rank{rank}.pt' (local), or
 # 's3://mybucket/mydir/ckpt/latest-rank{rank}.pt' (remote)
-# load_path: null
+# load_path: /scratch/jbusch/ma/models/modern_bert/{run_name}/ckpt/latest-rank{rank}.pt
