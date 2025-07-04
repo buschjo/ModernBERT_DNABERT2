@@ -19,10 +19,10 @@ conda activate bert24
 # Log the current date and hostname
 echo "Job started on $(hostname) at $(date)"
 
-python train_hf_dnabert2_tokenizer.py --data_path /scratch/jbusch/ma/data/dnabert_2_pretrain/tokenizer_training_subsamples/train_sub5M.txt \
+python train_hf_dnabert2_tokenizer.py --data_path /scratch/jbusch/ma/data/dnabert_2_pretrain/tokenizer_training_subsamples/reverse_complement/rc_split.txt \
     --save_path /scratch/jbusch/ma/tokenizer/hf_tokenizer/ \
     --vocab_size 4096 \
-    --tokenizer_name HF_5M_NRC
+    --tokenizer_name HF_5M_rc_split
 
 # Log completion time
 echo "Job finished at $(date)"

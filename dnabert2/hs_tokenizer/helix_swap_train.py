@@ -1,6 +1,6 @@
 import argparse
 import pandas as pd
-import helix_swap_bpe as hsb
+from helix_swap import HelixSwapRust as hsb
 
 def pars_ini():
     parser = argparse.ArgumentParser()
@@ -9,8 +9,6 @@ def pars_ini():
     return parser
 
 def create_train_tokenizer(args):
-    #x= hsb.TestClass(3,4)
-    #print(x.a)
     print('initializing helix swap')
     tokenizer=hsb.HelixSwapBpe(30,4,4096)
     print(f'training on data from {args.tokenizer_training_data}')
