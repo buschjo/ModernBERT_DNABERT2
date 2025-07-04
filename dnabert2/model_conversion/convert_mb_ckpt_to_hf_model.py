@@ -29,6 +29,7 @@ def update_config(
     cls_token_id: int,
     pad_token_id: int,
     sep_token_id: int,
+    unk_token_id: int,
     max_length: int,
     torch_dtype: TorchDtype,
 ) -> dict:
@@ -75,6 +76,7 @@ def update_config(
         "torch_dtype": torch_dtype.value,
         "transformers_version": "4.48.0",
         "vocab_size": source_config["vocab_size"],
+        "unk_token_id": unk_token_id,
     }
     return target_config
 
@@ -90,6 +92,7 @@ def main(
     sep_token_id: Annotated[int, Option(help="ID of the SEP token. Defaults to the ModernBERT SEP token.")] = 50282,
     pad_token_id: Annotated[int, Option(help="ID of the PAD token. Defaults to the ModernBERT PAD token.")] = 50283,
     mask_token_id: Annotated[int, Option(help="ID of the MASK token. Defaults to the ModernBERT MASK token.")] = 50284,
+    unk_token_id: Annotated[int, Option(help="ID of the UNK token. Defaults to 50280.")] = 50280,
     max_length: Annotated[int, Option(help="Maximum length of the input sequence. Defaults to the final ModernBERT sequence length.")] = 8192,
     torch_dtype: Annotated[TorchDtype, Option(help="Torch dtype to use for the model.")] = TorchDtype.float32,
     pytorch_bin: Annotated[bool, Option(help="Save weights as a pytorch_model.bin file.")] = True,
@@ -117,7 +120,7 @@ def main(
     with open(config_json_path, "r") as f:
         config_dict = json.load(f)
         config_dict = update_config(
-            config_dict, bos_token_id, eos_token_id, cls_token_id, pad_token_id, sep_token_id, max_length, torch_dtype
+            config_dict, bos_token_id, eos_token_id, cls_token_id, pad_token_id, sep_token_id, unk_token_id, max_length, torch_dtype
         )
     with open(config_json_path, "w") as f:
         json.dump(config_dict, f, indent=2)
