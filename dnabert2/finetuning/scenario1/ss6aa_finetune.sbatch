@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name=dna_finetuning
-#SBATCH --gres=gpu:2
+#SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --time=05:00:00
 #SBATCH --cpus-per-gpu=4
@@ -21,7 +21,7 @@ conda activate dnabert2_official_v2_hs
 export DATA_PATH=/scratch/jbusch/ma/data
 export BASE_MODEL=/scratch/jbusch/ma/models/modern_bert/converted_scenario1/
 export MODEL_ID=HF_HS_5M_NRC_150K_42_v6
-export TOKENIZER_PATH=/scratch/jbusch/ma/tokenizer/hf_tokenizer/scenario1/HS_5M_NRC
+export TOKENIZER_PATH=/scratch/jbusch/ma/tokenizer/hs_tokenizer/scenario1/HS_5M_NRC
 export OUTPUT_PATH=/scratch/jbusch/ma/models/modern_bert/finetuned_scenario1/
 export CACHE_DIR=/scratch/jbusch/ma/models/modern_bert/finetuned_scenario1/cache/
 

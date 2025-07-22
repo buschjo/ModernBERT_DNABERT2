@@ -24,8 +24,9 @@ for seed in 42
 do
     for data in prom_core_all prom_core_notata
     do
-        python dnabert2_finetuning.py \
-            --model_name_or_path ${base_model} \
+        python ../dnabert2_finetuning.py \
+            --model_name_or_path ${base_model}${model_id} \
+			--tokenizer_path ${tokenizer_path} \
             --data_path  $data_path/GUE/prom/$data \
             --kmer -1 \
             --run_name ${model_id}_${lr}_prom_${data}_seed${seed} \
@@ -51,8 +52,9 @@ do
 
     for data in prom_core_tata
     do
-        python dnabert2_finetuning.py \
-            --model_name_or_path ${base_model} \
+        python ../dnabert2_finetuning.py \
+            --model_name_or_path ${base_model}${model_id} \
+			--tokenizer_path ${tokenizer_path} \
             --data_path  $data_path/GUE/prom/$data \
             --kmer -1 \
             --run_name ${model_id}_${lr}_prom_${data}_seed${seed} \
@@ -78,8 +80,9 @@ do
 
     for data in prom_300_all prom_300_notata
     do
-        python dnabert2_finetuning.py \
-            --model_name_or_path ${base_model} \
+        python ../dnabert2_finetuning.py \
+            --model_name_or_path ${base_model}${model_id} \
+			--tokenizer_path ${tokenizer_path} \
             --data_path  $data_path/GUE/prom/$data \
             --kmer -1 \
             --run_name ${model_id}_${lr}_prom_${data}_seed${seed} \
@@ -105,7 +108,7 @@ do
 
     for data in prom_300_tata
     do 
-        python dnabert2_finetuning.py \
+        python ../dnabert2_finetuning.py \
             --model_name_or_path ${base_model}${model_id} \
 			--tokenizer_path ${tokenizer_path} \
             --data_path  $data_path/GUE/prom/$data \

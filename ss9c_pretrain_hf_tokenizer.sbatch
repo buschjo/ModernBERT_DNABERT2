@@ -4,12 +4,12 @@
 #SBATCH --gres=gpu:2
 #SBATCH --nodes=1
 ##SBATCH --nodelist=kiwinode02
-#SBATCH --time=120:00:00
-#SBATCH --cpus-per-gpu=8
+#SBATCH --time=48:00:00
+#SBATCH --cpus-per-gpu=1
 #SBATCH --mem-per-cpu=32G
 #SBATCH --qos=normal
-#SBATCH --output=../../sbatch_output/dnabert2_modern/pretraining/with_hf_tokenizer/scenario2/%j_%x.out
-#SBATCH --error=../../sbatch_output/dnabert2_modern/pretraining/with_hf_tokenizer/scenario2/%j_%x.err
+#SBATCH --output=../../sbatch_output/dnabert2_modern/pretraining/with_hf_tokenizer/scenario3/%j_%x.out
+#SBATCH --error=../../sbatch_output/dnabert2_modern/pretraining/with_hf_tokenizer/scenario3/%j_%x.err
 
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=s0560106@htw-berlin.de
@@ -23,7 +23,7 @@ conda activate mb_hs_v5
 # Log the current date and hostname
 echo "Job started on $(hostname) at $(date)"
 
-composer main.py yamls/main/v11b_hf_dna_mosaic-bert-base-uncased.yaml
+composer main.py yamls/main/v9c_hf_dna_mosaic-bert-base-uncased.yaml
 
 # Log completion time
 echo "Job finished at $(date)"
