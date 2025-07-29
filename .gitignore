@@ -1,5 +1,7 @@
 # DNABERT-2 ModernBERT Conversion TMP files
 tokenizer-save-dir-*
+*.png
+*.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
