@@ -1,3 +1,5 @@
+# This file has been modified by Josefine Busch
+
 # Copyright 2024 onwards Answer.AI, LightOn, and contributors
 # License: Apache-2.0
 
@@ -120,7 +122,7 @@ def log_config(cfg: DictConfig):
         if wandb.run:
             wandb.config.update(om.to_container(cfg, resolve=True))
 
-
+# adapted by Josefine Busch
 def build_algorithm(name, kwargs):
     if name == "gradient_clipping":
         return algorithms.GradientClipping(**kwargs)
@@ -148,7 +150,7 @@ def build_algorithm(name, kwargs):
         )
     else:
         raise ValueError(f"Not sure how to build algorithm: {name}")
-
+	# end of adapted by Josefine Busch
 
 def build_callback(name, kwargs):
     if name == "lr_monitor":
@@ -502,16 +504,6 @@ def main(cfg: DictConfig, return_trainer: bool = False, do_train: bool = True) -
             )
         else:
             trainer.fit(reset_time=cfg.get("reset_time", False))
-
-	# #### Adapted by Josefine Busch (02.05.2025)
-	# # Save model and tokenizer
-    # print(f"Saving model to {cfg.get('save_folder', None)}")
-    # model.model.save_pretrained(f"{cfg.get('save_folder', None)}/model_final")
-    # # model.tokenizer.save_pretrained(f"{cfg.get("save_folder", None)}/tokenizer_final")
-    
-    # torch.save(model, f"/scratch/jbusch/ma/models/modern_bert/save_model/model_final.pt")
-
-	# #### end of adapted by Josefine Busch (02.05.2025)
 
     if return_trainer:
         return trainer

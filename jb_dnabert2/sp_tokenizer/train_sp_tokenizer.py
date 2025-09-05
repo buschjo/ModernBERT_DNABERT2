@@ -1,4 +1,4 @@
-# https://github.com/google/sentencepiece/blob/master/python/sentencepiece_python_module_example.ipynb (accessed: 16.03.2025)
+# source: https://github.com/google/sentencepiece/blob/master/python/sentencepiece_python_module_example.ipynb (accessed: 09.05.2025)
 import sentencepiece as spm
 
 def create_tokenizer():
@@ -21,8 +21,6 @@ def create_tokenizer():
         # control_symbols = control_symbols,
         user_defined_symbols = user_defined_symbols,
         )
-    
-
 
 if __name__ == "__main__":
     create_tokenizer()

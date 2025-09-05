@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This file was created by Josefine Busch
+
 #SBATCH --job-name=mod_dna
 #SBATCH --gres=gpu:3
 #SBATCH --nodes=1

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This file was created by Josefine Busch
+
 #SBATCH --job-name=dna_pret
 #SBATCH --gres=gpu:4
 #SBATCH --nodes=1

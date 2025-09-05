@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This file was created by Josefine Busch
+
 #SBATCH --job-name=decompress
 ##SBATCH --gres=gpu:1
 #SBATCH --nodes=1

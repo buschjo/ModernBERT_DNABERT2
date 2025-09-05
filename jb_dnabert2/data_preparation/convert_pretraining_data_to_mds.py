@@ -1,8 +1,8 @@
 # Convert DNABERT2 Pretraining Data to Streaming Format (MDS)
 # adapted from
-# * https://github.com/mosaicml/streaming?tab=readme-ov-file#1-prepare-your-data (accessed: 13.03.2025)
-# * https://docs.mosaicml.com/projects/streaming/en/latest/getting_started/main_concepts.html (accessed: 13.03.2025)
-# * https://docs.mosaicml.com/projects/streaming/en/latest/preparing_datasets/basic_dataset_conversion.html#configuring-dataset-writing (accessed: 13.03.2025)
+# * https://github.com/mosaicml/streaming?tab=readme-ov-file#1-prepare-your-data (accessed: 05.09.2025)
+# * https://docs.mosaicml.com/projects/streaming/en/latest/getting_started/main_concepts.html (accessed: 05.09.2025)
+# * https://docs.mosaicml.com/projects/streaming/en/latest/preparing_datasets/basic_dataset_conversion.html#configuring-dataset-writing (accessed: 05.09.2025)
 
 import argparse
 import os

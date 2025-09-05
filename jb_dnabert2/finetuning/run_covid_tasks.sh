@@ -1,5 +1,5 @@
 #!/bin/bash
-# adapted from https://github.com/MAGICS-LAB/DNABERT_2/blob/main/finetune/scripts/run_dnabert2.sh (accessed: 01.05.2025)
+# adapted from https://github.com/MAGICS-LAB/DNABERT_2/blob/main/finetune/scripts/run_dnabert2.sh (accessed: 05.05.2025)
 
 data_path=$1
 scratch=/scratch/jbusch/ma/

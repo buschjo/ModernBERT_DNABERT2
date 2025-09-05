@@ -22,6 +22,7 @@ conda activate mb_conversion_hs #for hs tokenizer base model
 # Log the current date and hostname
 echo "Job started on $(hostname) at $(date)"
 
+## HF Model
 # python convert_to_hf.py --output-name hf_tokenizer5M_v4 \
 # 	--output-dir /scratch/jbusch/ma/models/modern_bert/converted_to_hf \
 # 	--input-checkpoint /scratch/jbusch/ma/models/modern_bert/hf_tokenizer_5M_v5/ckpt/ep18-ba150000-rank0.pt \
@@ -32,6 +33,7 @@ echo "Job started on $(hostname) at $(date)"
 # 	--max-length 128 \
 
 
+## HS Model
 python convert_to_hf.py --output-name hs_tokenizer5M_v5 \
 	--output-dir /scratch/jbusch/ma/models/modern_bert/converted_to_hf \
 	--input-checkpoint /scratch/jbusch/ma/models/modern_bert/hs_tokenizer5M_v5/ckpt/ep18-ba150000-rank0.pt \

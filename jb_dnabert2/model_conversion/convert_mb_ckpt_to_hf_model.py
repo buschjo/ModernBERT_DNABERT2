@@ -1,4 +1,4 @@
-## https://github.com/AnswerDotAI/ModernBERT/blob/pretraining_documentation/convert_to_hf.py accessed: 12.05.2025
+## adapted from https://github.com/AnswerDotAI/ModernBERT/blob/pretraining_documentation/convert_to_hf.py (accessed: 12.05.2025)
 import json
 import re
 from enum import Enum

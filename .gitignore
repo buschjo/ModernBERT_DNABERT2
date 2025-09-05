@@ -1,4 +1,4 @@
-# DNABERT-2 ModernBERT Conversion TMP files
+# This section was added by Josefine Busch: DNABERT-2 ModernBERT Conversion TMP files
 tokenizer-save-dir-*
 *.png
 *.csv

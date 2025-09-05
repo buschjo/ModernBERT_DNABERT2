@@ -1,4 +1,4 @@
-# adapted from https://github.com/MAGICS-LAB/DNABERT_2/issues/74
+# adapted from https://github.com/MAGICS-LAB/DNABERT_2/issues/74 (accessed: 05.09.2025)
 import argparse
 import os
 from tokenizers import Tokenizer
