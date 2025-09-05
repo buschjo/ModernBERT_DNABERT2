@@ -8,7 +8,7 @@ data_remote: # If blank, files must be present in data_local
 
 max_seq_len: 126
 model_name: zhihan1996/DNABERT-2-117M
-tokenizer_name: /scratch/jbusch/ma/tokenizer/hf_tokenizer/hf_dnabert_HF_5M_rc_split
+tokenizer_name: /scratch/jbusch/ma/tokenizer/hf_tokenizer/scenario2/hf_dnabert_HF_5M_rc_split
 mlm_probability: 0.15 # MosaicBERT should use 30% masking for optimal performance
 
 # Run Name

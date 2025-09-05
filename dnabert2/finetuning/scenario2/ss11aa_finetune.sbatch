@@ -14,8 +14,6 @@
 #SBATCH --mail-user=s0560106@htw-berlin.de
 
 source $HOME/.bashrc
-# conda activate ma_dnabert2
-# conda activate dnabert2_official_v2
 conda activate dnabert2_official_v2_hs
 
 export DATA_PATH=/scratch/jbusch/ma/data

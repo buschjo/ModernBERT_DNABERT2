@@ -8,7 +8,7 @@ data_remote: # If blank, files must be present in data_local
 
 max_seq_len: 126
 model_name: zhihan1996/DNABERT-2-117M
-tokenizer_name: /scratch/jbusch/ma/tokenizer/hf_tokenizer/hf_dnabert_HF_5M_NRC
+tokenizer_name: /scratch/jbusch/ma/tokenizer/hf_tokenizer/scenario1/hf_dnabert_HF_5M_NRC
 mlm_probability: 0.15 # MosaicBERT should use 30% masking for optimal performance
 
 # Run Name
@@ -120,7 +120,7 @@ loggers:
 # save_interval: 3500ba
 save_interval: 3500ba
 save_num_checkpoints_to_keep: 5  # Important, this cleans up checkpoints saved to DISK
-save_folder: /scratch/jbusch/ma/models/modern_bert/{run_name}/ckpt      # e.g. './{run_name}/ckpt' (local) or 's3://mybucket/mydir/{run_name}/ckpt' (remote)
+save_folder: /scratch/jbusch/ma/models/modern_bert/pretraining_scenario1/{run_name}/ckpt      # e.g. './{run_name}/ckpt' (local) or 's3://mybucket/mydir/{run_name}/ckpt' (remote)
 
 # (Optional) Load from local filesystem or remote object store to
 # start from an existing model checkpoint;

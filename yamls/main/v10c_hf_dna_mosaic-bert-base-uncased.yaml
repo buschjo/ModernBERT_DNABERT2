@@ -126,4 +126,4 @@ save_folder: /scratch/jbusch/ma/models/modern_bert/pretraining_scenario2/{run_na
 # start from an existing model checkpoint;
 # e.g. './ckpt/latest-rank{rank}.pt' (local), or
 # 's3://mybucket/mydir/ckpt/latest-rank{rank}.pt' (remote)
-# load_path: /scratch/jbusch/ma/models/modern_bert/{run_name}/ckpt/latest-rank{rank}.pt
+load_path: /scratch/jbusch/ma/models/modern_bert/pretraining_scenario2/{run_name}/ckpt/latest-rank{rank}.pt

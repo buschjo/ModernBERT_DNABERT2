@@ -22,6 +22,6 @@ echo "Job started on $(hostname) at $(date)"
 
 srun python helix_swap_train.py \
     --tokenizer_training_data /scratch/jbusch/ma/data/dnabert_2_pretrain/tokenizer_training_subsamples/train_sub6M.txt  \
-    --tokenizer_save_path /scratch/jbusch/ma/tokenizer/hs_tokenizer/HS_6M_NRC.json
+    --tokenizer_save_path /scratch/jbusch/ma/tokenizer/hs_tokenizer/scenario4/HS_6M_NRC.json
 
 echo "Job finished at $(date)"

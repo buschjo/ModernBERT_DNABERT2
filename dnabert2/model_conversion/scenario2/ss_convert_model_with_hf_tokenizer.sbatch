@@ -21,9 +21,29 @@ conda activate mb_conversion_hs #for hs tokenizer base model
 # Log the current date and hostname
 echo "Job started on $(hostname) at $(date)"
 
-python ../convert_mb_ckpt_to_hf_model.py --output-name HF_HF_2_5M_NRC_150K_199_v10 \
+# python ../convert_mb_ckpt_to_hf_model.py --output-name HF_HF_2_5M_NRC_150K_3_v10 \
+# 	--output-dir /scratch/jbusch/ma/models/modern_bert/converted_scenario2 \
+# 	--input-checkpoint /scratch/jbusch/ma/models/modern_bert/pretraining_scenario2/MB_HF_2_5M_NRC_150K_3_v10/ckpt/ep18-ba150000-rank0.pt \
+# 	--unk-token-id 0 \
+# 	--cls-token-id 3 \
+# 	--sep-token-id 1 \
+# 	--pad-token-id 2 \
+# 	--mask-token-id 4 \
+# 	--max-length 1000 \
+
+python ../convert_mb_ckpt_to_hf_model.py --output-name HF_HF_5M_RC_150K_3_v11 \
 	--output-dir /scratch/jbusch/ma/models/modern_bert/converted_scenario2 \
-	--input-checkpoint /scratch/jbusch/ma/models/modern_bert/pretraining_scenario2/MB_HF_2_5M_NRC_150K_199_v10/ckpt/ep18-ba150000-rank0.pt \
+	--input-checkpoint /scratch/jbusch/ma/models/modern_bert/pretraining_scenario2/MB_HF_5M_RC_150K_3_v11/ckpt/ep18-ba150000-rank0.pt \
+	--unk-token-id 0 \
+	--cls-token-id 3 \
+	--sep-token-id 1 \
+	--pad-token-id 2 \
+	--mask-token-id 4 \
+	--max-length 1000 \
+
+python ../convert_mb_ckpt_to_hf_model.py --output-name HF_HF_5M_RC_150K_42_v11 \
+	--output-dir /scratch/jbusch/ma/models/modern_bert/converted_scenario2 \
+	--input-checkpoint /scratch/jbusch/ma/models/modern_bert/pretraining_scenario2/MB_HF_5M_RC_150K_42_v11/ckpt/ep18-ba150000-rank0.pt \
 	--unk-token-id 0 \
 	--cls-token-id 3 \
 	--sep-token-id 1 \

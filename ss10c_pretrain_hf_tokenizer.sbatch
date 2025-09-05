@@ -3,7 +3,7 @@
 #SBATCH --job-name=dna_pret
 #SBATCH --gres=gpu:2
 #SBATCH --nodes=1
-#SBATCH --nodelist=kiwinode02
+##SBATCH --nodelist=kiwinode02
 #SBATCH --time=120:00:00
 #SBATCH --cpus-per-gpu=8
 #SBATCH --mem-per-cpu=32G

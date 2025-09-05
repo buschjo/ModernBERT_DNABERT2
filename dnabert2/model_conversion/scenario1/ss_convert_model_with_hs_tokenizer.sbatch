@@ -31,9 +31,9 @@ echo "Job started on $(hostname) at $(date)"
 # 	--mask-token-id 4 \
 # 	--max-length 1000 \
 
-python ../convert_mb_ckpt_to_hf_model.py --output-name HF_HS_5M_NRC_150K_199_v6 \
+python ../convert_mb_ckpt_to_hf_model.py --output-name HF_HS_5M_NRC_150K_3_v6 \
 	--output-dir /scratch/jbusch/ma/models/modern_bert/converted_scenario1 \
-	--input-checkpoint /scratch/jbusch/ma/models/modern_bert/pretraining_scenario1/MB_HS_5M_NRC_150K_199_v6/ckpt/ep18-ba150000-rank0.pt \
+	--input-checkpoint /scratch/jbusch/ma/models/modern_bert/pretraining_scenario1/MB_HS_5M_NRC_150K_3_v6/ckpt/ep18-ba150000-rank0.pt \
 	--unk-token-id 0 \
 	--cls-token-id 1 \
 	--sep-token-id 2 \
